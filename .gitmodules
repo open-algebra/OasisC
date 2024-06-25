@@ -1,0 +1,3 @@
+[submodule "libs/Oasis"]
+	path = libs/Oasis
+	url = https://github.com/open-algebra/Oasis.git
