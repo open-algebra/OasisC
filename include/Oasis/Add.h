@@ -6,5 +6,6 @@
 #define ADD_H
 
 struct Oa_Expression* Oa_CreateAdd(struct Oa_Expression*, struct Oa_Expression*);
+struct Oa_Expression* Oa_CreateAddNF(struct Oa_Expression*, struct Oa_Expression*);
 
 #endif //ADD_H

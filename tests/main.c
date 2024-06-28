@@ -17,8 +17,5 @@ int main()
 
     assert(Oa_GetValueFromReal(result) == 5);
 
-    Oa_Free(real1);
-    Oa_Free(real2);
-    Oa_Free(add);
     Oa_Free(result);
 }
