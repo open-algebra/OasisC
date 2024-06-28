@@ -16,4 +16,9 @@ int main()
     struct Oa_Expression* result = Oa_Simplify(add);
 
     assert(Oa_GetValueFromReal(result) == 5);
+
+    Oa_Free(real1);
+    Oa_Free(real2);
+    Oa_Free(add);
+    Oa_Free(result);
 }
