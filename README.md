@@ -1,4 +1,4 @@
-# OasisC - A C Wrapper for the Oasis library
+# OasisC
 
 This project provides a C wrapper around the [Oasis](https://github.com/open-algebra/Oasis) library, a C++ library for computer algebra. It's designed to make the Oasis library accessible in projects written in C.
 
