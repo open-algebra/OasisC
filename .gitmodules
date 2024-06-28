@@ -1,3 +1,6 @@
 [submodule "libs/Oasis"]
 	path = libs/Oasis
 	url = https://github.com/open-algebra/Oasis.git
+[submodule "docs/doxygen-awesome-css"]
+	path = docs/doxygen-awesome-css
+	url = https://github.com/jothepro/doxygen-awesome-css.git
