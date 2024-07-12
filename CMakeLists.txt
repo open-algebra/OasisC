@@ -8,7 +8,8 @@ add_library(OasisC
         src/Real.cpp
         src/Add.cpp
         src/Subtract.cpp
-        src/Multiply.cpp)
+        src/Multiply.cpp
+        src/Divide.cpp)
 
 target_include_directories(OasisC PUBLIC include)
 target_link_libraries(OasisC PUBLIC Oasis::Oasis)
