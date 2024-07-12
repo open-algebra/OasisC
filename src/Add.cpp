@@ -10,8 +10,8 @@ extern "C"
 
 Oa_Expression* Oa_CreateAddNF(Oa_Expression* left, Oa_Expression* right)
 {
-    auto* cppLeft = reinterpret_cast<Oasis::Expression*>(left);
-    auto* cppRight = reinterpret_cast<Oasis::Expression*>(right);
+    const auto* cppLeft = reinterpret_cast<Oasis::Expression*>(left);
+    const auto* cppRight = reinterpret_cast<Oasis::Expression*>(right);
 
     auto* add = new Oasis::Add<> { *cppLeft, *cppRight };
     return reinterpret_cast<Oa_Expression*>(add);
