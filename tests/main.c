@@ -7,6 +7,7 @@
 #include "Oasis/Add.h"
 #include "Oasis/Subtract.h"
 #include "Oasis/Multiply.h"
+#include "Oasis/Divide.h"
 #include "Oasis/Real.h"
 
 int main()
@@ -29,9 +30,15 @@ int main()
 
     munit_assert_float(Oa_GetValueFromReal(multiplyResult), ==, 6);
 
+    struct Oa_Expression* divide = Oa_CreateDivideNF(real1, real2);
+    struct Oa_Expression* divideResult = Oa_Simplify(divide);
+
+    munit_assert_double_equal(Oa_GetValueFromReal(divideResult), 0.667, 3);
+
     Oa_Free(real1);
     Oa_Free(real2);
     Oa_Free(addResult);
     Oa_Free(subtractResult);
     Oa_Free(multiplyResult);
+    Oa_Free(divideResult);
 }
