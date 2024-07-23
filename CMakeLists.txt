@@ -14,4 +14,10 @@ add_library(OasisC
 target_include_directories(OasisC PUBLIC include)
 target_link_libraries(OasisC PUBLIC Oasis::Oasis)
 
-add_subdirectory(tests)
+if(OASIS_BUILD_TESTS)
+    add_subdirectory(tests)
+endif()
+
+if(OASIS_BUILD_EXTRAS)
+    add_subdirectory(extras)
+endif()
