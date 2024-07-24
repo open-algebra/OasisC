@@ -4,11 +4,17 @@
 #include <cstring>
 #include <Oasis/MathMLSerializer.hpp>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#else
+#define EMSCRIPTEN_KEEPALIVE
+#endif
+
 extern "C"
 {
 #include "Oasis/MathMLSerializer.h"
 
-const char* Oa_ExpressionToMathMLStr(Oa_Expression* cexpr)
+EMSCRIPTEN_KEEPALIVE const char* Oa_ExpressionToMathMLStr(Oa_Expression* cexpr)
 {
     const auto* expr = reinterpret_cast<Oasis::Expression*>(cexpr);
 

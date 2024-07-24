@@ -8,7 +8,13 @@ extern "C"
 #include "Oasis/Divide.h"
 #include "Oasis/Expression.h"
 
-Oa_Expression* Oa_CreateDivideNF(Oa_Expression* left, Oa_Expression* right)
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#else
+#define EMSCRIPTEN_KEEPALIVE
+#endif
+
+EMSCRIPTEN_KEEPALIVE Oa_Expression* Oa_CreateDivideNF(Oa_Expression* left, Oa_Expression* right)
 {
     const auto* cppLeft = reinterpret_cast<Oasis::Expression*>(left);
     const auto* cppRight = reinterpret_cast<Oasis::Expression*>(right);
@@ -17,7 +23,7 @@ Oa_Expression* Oa_CreateDivideNF(Oa_Expression* left, Oa_Expression* right)
     return reinterpret_cast<Oa_Expression*>(divide);
 }
 
-Oa_Expression* Oa_CreateDivide(Oa_Expression* left, Oa_Expression* right)
+EMSCRIPTEN_KEEPALIVE Oa_Expression* Oa_CreateDivide(Oa_Expression* left, Oa_Expression* right)
 {
     auto* divide = Oa_CreateDivideNF(left, right);
     Oa_Free(left);

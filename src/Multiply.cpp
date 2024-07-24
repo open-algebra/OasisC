@@ -3,12 +3,18 @@
 //
 #include <Oasis/Multiply.hpp>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#else
+#define EMSCRIPTEN_KEEPALIVE
+#endif
+
 extern "C"
 {
 #include "Oasis/Multiply.h"
 #include "Oasis/Expression.h"
 
-Oa_Expression* Oa_CreateMultiplyNF(Oa_Expression* left, Oa_Expression* right)
+EMSCRIPTEN_KEEPALIVE Oa_Expression* Oa_CreateMultiplyNF(Oa_Expression* left, Oa_Expression* right)
 {
     const auto* cppLeft = reinterpret_cast<Oasis::Expression*>(left);
     const auto* cppRight = reinterpret_cast<Oasis::Expression*>(right);
@@ -17,7 +23,7 @@ Oa_Expression* Oa_CreateMultiplyNF(Oa_Expression* left, Oa_Expression* right)
     return reinterpret_cast<Oa_Expression*>(multiply);
 }
 
-Oa_Expression* Oa_CreateMultiply(Oa_Expression* left, Oa_Expression* right)
+EMSCRIPTEN_KEEPALIVE Oa_Expression* Oa_CreateMultiply(Oa_Expression* left, Oa_Expression* right)
 {
     auto* multiply = Oa_CreateMultiplyNF(left, right);
     Oa_Free(left);
