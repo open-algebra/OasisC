@@ -25,5 +25,13 @@ EMSCRIPTEN_KEEPALIVE Oa_Expression* Oa_FromInFix(const char* str)
     return nullptr;
 }
 
+EMSCRIPTEN_KEEPALIVE const char* Oa_PreProcessInFix(const char* str)
+{
+    const auto result = Oasis::PreProcessInFix(str);
+    const auto cresult = new char[result.size()];
+    strlcpy(cresult, result.c_str(), result.size());
+    return cresult;
+}
+
 }
 

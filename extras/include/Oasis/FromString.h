@@ -6,5 +6,6 @@
 #define FROMSTRING_H
 
 struct Oa_Expression* Oa_FromInFix(const char* str);
+const char* Oa_PreProcessInFix(const char* str);
 
 #endif //FROMSTRING_H
