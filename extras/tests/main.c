@@ -9,7 +9,10 @@
 
 int main(const int argc, char* argv[])
 {
-    struct Oa_Expression* result = Oa_FromInFix("2 + 2");
+    const char* preprocessed = Oa_PreProcessInFix("2+2");
+    munit_assert_string_equal(preprocessed, "2 + 2");
+
+    struct Oa_Expression* result = Oa_FromInFix(preprocessed);
     munit_assert_not_null(result);
 
     const char* expected =
