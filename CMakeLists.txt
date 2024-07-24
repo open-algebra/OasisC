@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.22)
 project(OasisC CXX C)
 
 add_subdirectory(libs/Oasis)
@@ -14,7 +14,7 @@ set(OasisC_SOURCES
 if (DEFINED EMSCRIPTEN)
     add_executable(OasisC ${OasisC_SOURCES})
     set(CMAKE_EXECUTABLE_SUFFIX ".mjs")
-    target_link_options(OasisC PUBLIC -sSINGLE_FILE --no-entry "-s EXPORT_NAME='OasisC'" "-s EXPORTED_RUNTIME_METHODS='[\"ccall\", \"cwrap\"]'")
+    target_link_options(OasisC PUBLIC -sSINGLE_FILE --no-entry "-sEXPORT_NAME='OasisC'" "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap")
 else ()
     add_library(OasisC ${OasisC_SOURCES})
 endif ()
@@ -28,5 +28,7 @@ endif()
 
 if(OASIS_BUILD_EXTRAS)
     add_subdirectory(extras)
-    target_link_libraries(OasisC PUBLIC OasisCExtras)
+    if (DEFINED EMSCRIPTEN)
+        target_link_libraries(OasisC PUBLIC OasisCExtras)
+    endif ()
 endif()
