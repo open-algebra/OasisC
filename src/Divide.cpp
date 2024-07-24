@@ -3,16 +3,16 @@
 //
 #include <Oasis/Divide.hpp>
 
-extern "C"
-{
-#include "Oasis/Divide.h"
-#include "Oasis/Expression.h"
-
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
 #else
 #define EMSCRIPTEN_KEEPALIVE
 #endif
+
+extern "C"
+{
+#include "Oasis/Divide.h"
+#include "Oasis/Expression.h"
 
 EMSCRIPTEN_KEEPALIVE Oa_Expression* Oa_CreateDivideNF(Oa_Expression* left, Oa_Expression* right)
 {
