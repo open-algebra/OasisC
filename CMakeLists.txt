@@ -13,8 +13,7 @@ set(OasisC_SOURCES
 
 if (DEFINED EMSCRIPTEN)
     add_executable(OasisC ${OasisC_SOURCES})
-    set(CMAKE_EXECUTABLE_SUFFIX ".mjs")
-    target_link_options(OasisC PUBLIC -sSINGLE_FILE --no-entry "-sEXPORT_NAME='OasisC'" "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap")
+    target_link_options(OasisC PUBLIC -sSINGLE_FILE --no-entry "-sEXPORT_NAME='OasisC'" "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap" "-sENVIRONMENT='web'" "--emit-tsd OasisC.d.ts")
 else ()
     add_library(OasisC ${OasisC_SOURCES})
 endif ()
