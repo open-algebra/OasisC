@@ -1,2 +1,0 @@
-add_executable(OasisCExtraTests main.c)
-target_link_libraries(OasisCExtraTests PUBLIC OasisC OasisCExtras munit)
