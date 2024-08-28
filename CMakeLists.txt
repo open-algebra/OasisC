@@ -13,7 +13,15 @@ set(OasisC_SOURCES
 
 if (DEFINED EMSCRIPTEN)
     add_executable(OasisC ${OasisC_SOURCES})
-    target_link_options(OasisC PUBLIC -sSINGLE_FILE --no-entry "-sEXPORT_NAME='OasisC'" "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap" "-sENVIRONMENT='web'" "--emit-tsd OasisC.d.ts")
+    set_target_properties(OasisC PROPERTIES SUFFIX ".mjs")
+    target_link_libraries(OasisC PUBLIC embind)
+    target_link_options(OasisC PUBLIC
+            --no-entry
+            "-sSINGLE_FILE"
+            "-sEXPORT_NAME='useOasis'"
+            "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap"
+            "-sENVIRONMENT='web'"
+            "--emit-tsd OasisC.d.ts")
 else ()
     add_library(OasisC ${OasisC_SOURCES})
 endif ()
