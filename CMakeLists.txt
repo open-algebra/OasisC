@@ -12,14 +12,7 @@ set(OasisC_SOURCES
         src/Divide.cpp)
 
 if (DEFINED EMSCRIPTEN)
-    add_executable(OasisC ${OasisC_SOURCES})
-    target_link_libraries(OasisC PUBLIC embind)
-    target_link_options(OasisC PUBLIC
-            --no-entry
-            "-sSINGLE_FILE"
-            "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap"
-            "-sENVIRONMENT='web'"
-            "--emit-tsd OasisC.d.ts")
+    add_library(OasisC OBJECT ${OasisC_SOURCES})
 else ()
     add_library(OasisC ${OasisC_SOURCES})
 endif ()
