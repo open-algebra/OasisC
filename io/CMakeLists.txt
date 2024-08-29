@@ -12,6 +12,6 @@ target_include_directories(OasisCIO
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(OasisCIO PUBLIC Oasis::Oasis Oasis::IO)
 
-if(OASIS_BUILD_TESTS)
+if(OASIS_BUILD_TESTS AND NOT DEFINED EMSCRIPTEN)
     add_subdirectory(tests)
 endif()

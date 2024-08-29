@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Custom CMake wrapper for use with CLion when building with Emscripten
+
+if echo "$@" | grep -q -- "--build"; then
+  emmake cmake "$@"
+else
+  emcmake cmake "$@"
+fi
