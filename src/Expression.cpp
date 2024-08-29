@@ -33,9 +33,11 @@ EMSCRIPTEN_KEEPALIVE void Oa_Free(Oa_Expression* cexpr)
     delete exp;
 }
 
+#ifdef __EMSCRIPTEN__
 EMSCRIPTEN_BINDINGS(core)
 {
     function("Oa_Simplify", &Oa_Simplify, emscripten::return_value_policy::reference());
 }
+#endif
 
 }
