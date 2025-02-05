@@ -21,7 +21,7 @@ EMSCRIPTEN_KEEPALIVE const char* Oa_ExpressionToMathMLStr(Oa_Expression* cexpr)
     tinyxml2::XMLDocument doc;
     Oasis::MathMLSerializer serializer(doc);
 
-    expr->Serialize(serializer);
+    expr->Accept(serializer);
     doc.InsertEndChild(serializer.GetResult());
 
     tinyxml2::XMLPrinter printer;
